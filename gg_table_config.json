@@ -1,0 +1,232 @@
+[
+    {
+        "table": "gapguardian_all_dates_amazon_fulfilled_shipments",
+        "info": [
+            {
+                "report_type": "GET_AMAZON_FULFILLED_SHIPMENTS_DATA_GENERAL",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_fba_all_listings",
+        "info": [
+            {
+                "report_type": "GET_FBA_INVENTORY_PLANNING_DATA",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_fba_fulfillment_customer_returns_data",
+        "info": [
+            {
+                "report_type": "GET_FBA_FULFILLMENT_CUSTOMER_RETURNS_DATA",
+                "days": 13,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_fba_inventory_planning_data",
+        "info": [
+            {
+                "report_type": "GET_FBA_INVENTORY_PLANNING_DATA",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_fba_sns_forecast",
+        "info": [
+            {
+                "report_type": "GET_FBA_SNS_FORECAST_DATA",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_fba_sns_performance",
+        "info": [
+            {
+                "report_type": "GET_FBA_SNS_PERFORMANCE_DATA",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_ledger_detail",
+        "info": [
+            {
+                "report_type": "GET_LEDGER_DETAIL_VIEW_DATA",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_merchant_listings_all_data",
+        "info": [
+            {
+                "report_type": "GET_MERCHANT_LISTINGS_ALL_DATA",
+                "days": 0,
+                "suffix": "_asinGranularity=CHILD_dateGranularity=DAY.tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_merchant_listings_fyp_report",
+        "info": [
+            {
+                "report_type": "GET_MERCHANTS_LISTINGS_FYP_REPORT",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_myi_all_inventory",
+        "info": [
+            {
+                "report_type": "GET_FBA_MYI_ALL_INVENTORY_DATA",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_reserved_inventory",
+        "info": [
+            {
+                "report_type": "GET_RESERVED_INVENTORY_DATA",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_restock_inventory_recommendations",
+        "info": [
+            {
+                "report_type": "GET_RESTOCK_INVENTORY_RECOMMENDATIONS_REPORT",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_vendor_sales_manufacturing_dbt",
+        "info": [
+            {
+                "report_type": "GET_VENDOR_SALES_MANUFACTURING_REPORT__RETAIL_MANUFACTURING_DAY",
+                "days": 0,
+                "suffix": "_sellingProgram=RETAIL_distributorView=MANUFACTURING_reportPeriod=DAY.json.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_all_dates_vendor_sales_sourcing_dbt",
+        "info": [
+            {
+                "report_type": "GET_VENDOR_SALES_SOURCING_REPORT__RETAIL_SOURCING_DAY",
+                "days": 0,
+                "suffix": "_sellingProgram=RETAIL_distributorView=SOURCING_reportPeriod=DAY.json.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_historical_new_trial",
+        "info": [
+            {
+                "report_type": "GET_VENDOR_SALES_MANUFACTURING_REPORT__RETAIL_MANUFACTURING_DAY",
+                "days": 0,
+                "suffix": "_sellingProgram=RETAIL_distributorView=MANUFACTURING_reportPeriod=DAY.json.gz"
+            },
+            {
+                "report_type": "GET_VENDOR_SALES_SOURCING_REPORT__RETAIL_SOURCING_DAY",
+                "days": 0,
+                "suffix": "_sellingProgram=RETAIL_distributorView=SOURCING_reportPeriod=DAY.json.gz"
+            },
+            {
+                "report_type": "GET_SALES_AND_TRAFFIC_REPORT",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_sales_and_traffic_restatement",
+        "info": [
+            {
+                "report_type": "GET_SALES_AND_TRAFFIC_REPORT",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gapguardian_search_query_performance_top_1200",
+        "info": [
+            {
+                "report_type": "GET_BRAND_ANALYTICS_SEARCH_QUERY_PERFORMANCE_REPORT",
+                "days": 6,
+                "suffix": "_asin=%ASIN%.json.gz"
+            }
+        ]
+    },
+    {
+        "table": "gg_today_missing_fba_all_listings",
+        "info": [
+            {
+                "report_type": "GET_MERCHANT_LISTINGS_ALL_DATA",
+                "days": 0,
+                "suffix": "_asinGranularity=CHILD_dateGranularity=DAY.tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gg_today_missing_myi_all_inventory",
+        "info": [
+            {
+                "report_type": "GET_FBA_MYI_ALL_INVENTORY_DATA",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gg_today_missing_reserved_inventory",
+        "info": [
+            {
+                "report_type": "GET_RESERVED_INVENTORY_DATA",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gg_today_missing_restock_inventory_recommendations",
+        "info": [
+            {
+                "report_type": "GET_RESTOCK_INVENTORY_RECOMMENDATIONS_REPORT",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    },
+    {
+        "table": "gg_ystrday_missing_sales_and_traffic",
+        "info": [
+            {
+                "report_type": "GET_SALES_AND_TRAFFIC_REPORT",
+                "days": 0,
+                "suffix": ".tsv.gz"
+            }
+        ]
+    }
+]
