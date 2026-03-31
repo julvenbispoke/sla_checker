@@ -15,6 +15,9 @@ app.use(express.json())
 
 router.get("/", async (req, res) => {
 
+    res.send({status: false})
+    return 
+
     let report_data = []
 
     let list = (report_type_list.map(x => x.split(" ")).map(x => {

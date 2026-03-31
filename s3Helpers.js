@@ -7,52 +7,27 @@ const gg_table_config = require("./gg_table_config.json")
 dotenv.config();
 // Constants
 
+// const live = true
+const live = false
+
+const bigquery = new BigQuery({
+    keyFilename: `./key.json`,
+    projectId: process.env.BQ_PROJECT
+});
+
+const bigquery_dev = new BigQuery({
+    keyFilename: `./key.json`,
+    projectId: process.env.BQ_PROJECT_DEV 
+});
+
+const bigquery_prod = new BigQuery({
+    keyFilename: `./key.json`,
+    projectId: process.env.BQ_PROJECT_PROD
+})
+
+const s3Client = createS3Client(process.env.AWS_REGION);
+
 const DEFAULT_BUCKET = 'amazon-reporting-data';
-
-let REPORT_TYPE_DATE_RANGE = [
-    {
-        report_type: "GET_SALES_AND_TRAFFIC_REPORT__CHILD_DAY",
-        days: 0,
-        suffix: "_asinGranularity=CHILD_dateGranularity=DAY.json.gz",
-        replace: [],
-        tables: [
-
-        ]
-    },
-    {
-        report_type: "GET_FBA_MYI_ALL_INVENTORY_DATA",
-        days: 0,
-        suffix: ".tsv.gz",
-        replace: []
-    },
-    {
-        report_type: "GET_FBA_INVENTORY_PLANNING_DATA",
-        days: 0,
-        suffix: ".tsv.gz",
-        replace: []
-    },
-    {
-        report_type: "GET_RESTOCK_INVENTORY_RECOMMENDATIONS_REPORT",
-        days: 0,
-        suffix: ".tsv.gz",
-        replace: [],
-
-    },
-    {
-        report_type: "GET_FBA_FULFILLMENT_CUSTOMER_RETURNS_DATA",
-        days: 13,
-        suffix: "_asinGranularity=CHILD_dateGranularity=DAY.tsv.gz",
-        replace: []
-    },
-    {
-        report_type: "GET_BRAND_ANALYTICS_SEARCH_QUERY_PERFORMANCE_REPORT",
-        days: 6,
-        suffix: "_asin=%ASIN%.json.gz",
-        replace: ["%ASIN%"]
-    },
-
-
-]
 
 const MARKETPLACE_MAP = {}
 marketplaceList.forEach(x => {
@@ -119,16 +94,7 @@ async function headObject(s3Client, bucket, key, date, report) {
     }
 }
 
-const bigquery = new BigQuery({
-    keyFilename: `./key.json`,
-    projectId: process.env.BQ_PROJECT
-});
 
-const bigquery_dev = new BigQuery({
-    keyFilename: `./key.json`,
-    projectId: process.env.BQ_PROJECT_DEV
-});
-const s3Client = createS3Client(process.env.AWS_REGION);
 
 const getTableInfo = (table, report_type) => {
     // console.log("GET TABLE INFO: ", {table, report_type})
@@ -190,28 +156,29 @@ const suffix_modify = (report, report_type, table) => {
 
         // return report.file_suffix.replace("%ASIN%", report.asin)
 
+        let newSuffix = !!report.asin ? found_report_type.suffix.replace("%ASIN%", report.asin) :  found_report_type.suffix;
 
-        let newSuffix = found_report_type.suffix.replace("%ASIN%", report.asin)
-
-        // console.log("NEW SUFFIX ", newSuffix)
-        return report.file_suffix = newSuffix
+        // console.log("NEW SUFFIX ",found_report_type.report_type, newSuffix)
+        report.suffix = newSuffix;
+        return  newSuffix
 
     }
 
-    return suffix
+    return found_report_type.suffix
 }
 
 module.exports = {
+    live,
     createS3Client,
     buildS3Path,
     validateReportMetadata,
     headObject,
-    REPORT_TYPE_DATE_RANGE,
     DEFAULT_BUCKET,
     MARKETPLACE_MAP,
     bigquery,
     s3Client,
     bigquery_dev,
+    bigquery_prod,
     date_modify,
     suffix_modify
 };

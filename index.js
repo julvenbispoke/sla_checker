@@ -16,23 +16,27 @@ app.use(express.json())
 
 // exports.handler = async (event, context) => {
 
-const main = require("./main")
+
+
+const { bigquery_dev } = require('./s3Helpers');
+
+// const main = require("./main")
 const write_config = require("./write_config")
+const run_per_client = require("./run_per_client");
+const run_client = require("./run_client");
 
-
-app.use("/", main)
+// app.use("/", main)
 app.use("/write_config", write_config)
+app.use("/run_per_client", run_per_client)
+app.use("/run_client", run_client)
 
 
 
 
-app.get("/time", (req, res) => {
 
+app.get("/test", async (req, res) => {
 
-    res.send({
-        moment: moment.tz("UTC").format("YYYY-MM-DD HH:mm:ss"),
-        luxon: DateTime.utc().toFormat("yyyy-MM-dd HH:mm:ss")
-    })
+    res.send(moment.tz("UTC").format("YYYY-MM-DD"))
 
     return
 

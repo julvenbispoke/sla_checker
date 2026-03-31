@@ -40,26 +40,6 @@
         ]
     },
     {
-        "table": "gapguardian_all_dates_fba_sns_forecast",
-        "info": [
-            {
-                "report_type": "GET_FBA_SNS_FORECAST_DATA",
-                "days": 0,
-                "suffix": ".tsv.gz"
-            }
-        ]
-    },
-    {
-        "table": "gapguardian_all_dates_fba_sns_performance",
-        "info": [
-            {
-                "report_type": "GET_FBA_SNS_PERFORMANCE_DATA",
-                "days": 0,
-                "suffix": ".tsv.gz"
-            }
-        ]
-    },
-    {
         "table": "gapguardian_all_dates_ledger_detail",
         "info": [
             {
@@ -163,7 +143,7 @@
         "table": "gapguardian_sales_and_traffic_restatement",
         "info": [
             {
-                "report_type": "GET_SALES_AND_TRAFFIC_REPORT",
+                "report_type": "GET_SALES_AND_TRAFFIC_REPORT__CHILD_DAY",
                 "days": 0,
                 "suffix": ".tsv.gz"
             }
@@ -176,56 +156,6 @@
                 "report_type": "GET_BRAND_ANALYTICS_SEARCH_QUERY_PERFORMANCE_REPORT",
                 "days": 6,
                 "suffix": "_asin=%ASIN%.json.gz"
-            }
-        ]
-    },
-    {
-        "table": "gg_today_missing_fba_all_listings",
-        "info": [
-            {
-                "report_type": "GET_MERCHANT_LISTINGS_ALL_DATA",
-                "days": 0,
-                "suffix": "_asinGranularity=CHILD_dateGranularity=DAY.tsv.gz"
-            }
-        ]
-    },
-    {
-        "table": "gg_today_missing_myi_all_inventory",
-        "info": [
-            {
-                "report_type": "GET_FBA_MYI_ALL_INVENTORY_DATA",
-                "days": 0,
-                "suffix": ".tsv.gz"
-            }
-        ]
-    },
-    {
-        "table": "gg_today_missing_reserved_inventory",
-        "info": [
-            {
-                "report_type": "GET_RESERVED_INVENTORY_DATA",
-                "days": 0,
-                "suffix": ".tsv.gz"
-            }
-        ]
-    },
-    {
-        "table": "gg_today_missing_restock_inventory_recommendations",
-        "info": [
-            {
-                "report_type": "GET_RESTOCK_INVENTORY_RECOMMENDATIONS_REPORT",
-                "days": 0,
-                "suffix": ".tsv.gz"
-            }
-        ]
-    },
-    {
-        "table": "gg_ystrday_missing_sales_and_traffic",
-        "info": [
-            {
-                "report_type": "GET_SALES_AND_TRAFFIC_REPORT",
-                "days": 0,
-                "suffix": ".tsv.gz"
             }
         ]
     }
