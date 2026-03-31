@@ -133,9 +133,9 @@
                 "suffix": "_sellingProgram=RETAIL_distributorView=SOURCING_reportPeriod=DAY.json.gz"
             },
             {
-                "report_type": "GET_SALES_AND_TRAFFIC_REPORT",
+                "report_type": "GET_SALES_AND_TRAFFIC_REPORT__CHILD_DAY",
                 "days": 0,
-                "suffix": ".tsv.gz"
+                "suffix": "_asinGranularity=CHILD_dateGranularity=DAY.json.gz"
             }
         ]
     },
