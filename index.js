@@ -17,7 +17,7 @@ app.use(express.json())
 // exports.handler = async (event, context) => {
 
 
-
+ 
 const { bigquery_dev } = require('./s3Helpers');
 
 // const main = require("./main")
