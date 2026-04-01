@@ -143,9 +143,10 @@
         "table": "gapguardian_sales_and_traffic_restatement",
         "info": [
             {
-                "report_type": "GET_SALES_AND_TRAFFIC_REPORT__CHILD_DAY",
+                "report_type": "GET_SALES_AND_TRAFFIC_REPORT",
+                "s3_report_type": "GET_SALES_AND_TRAFFIC_REPORT__CHILD_DAY",
                 "days": 0,
-                "suffix": ".tsv.gz"
+                "suffix": "_asinGranularity=CHILD_dateGranularity=DAY.json.gz"
             }
         ]
     },

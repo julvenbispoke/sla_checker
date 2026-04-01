@@ -17,7 +17,9 @@ const {
     date_modify,
     suffix_modify,
     live,
-    bigquery_prod
+    bigquery_prod,
+    getS3ReportType,
+    
 } = require('./s3Helpers');
 const s3Client = createS3Client(process.env.AWS_REGION);
 
@@ -38,7 +40,7 @@ let main = async (req) => {
         SELECT 
         a.*, 
         b.*,
-        c.*
+        c.*                         
         FROM \`amazon-sp-report-loader.dbt.${gg_table}\` AS a
         LEFT JOIN \`amazon-sp-report-loader.sla.clientId_and_sellerId\` AS b
         ON a.client_id = b.client_id
@@ -46,6 +48,7 @@ let main = async (req) => {
         ON a.report_type = c.report_type 
         WHERE a.client_id = "${client_id}" 
          `
+  
 
     let reports = []
     try {
@@ -99,7 +102,8 @@ let main = async (req) => {
 
             let s3Link = [
                 "amazon-selling-partners-api/",
-                `${report.report_type}/`,
+                // `${report.report_type}/`,
+                `${getS3ReportType(gg_table, report.report_type)}/`,
                 `${MARKETPLACE_MAP[report.marketplace]}/`,
                 `${report.client_id}/`,
                 `${report.sellerId_1}/`,
@@ -108,7 +112,7 @@ let main = async (req) => {
                 `${suffix_modify(report, report_type, gg_table)}`
             ].join("")
 
-            // console.log(report)
+            console.log("S3 LINK", s3Link)
             // break
             linkList.push({ s3Link, date, report })
 

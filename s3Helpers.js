@@ -17,7 +17,7 @@ const bigquery = new BigQuery({
 
 const bigquery_dev = new BigQuery({
     keyFilename: `./key.json`,
-    projectId: process.env.BQ_PROJECT_DEV 
+    projectId: process.env.BQ_PROJECT_DEV
 });
 
 const bigquery_prod = new BigQuery({
@@ -111,6 +111,17 @@ const getTableInfo = (table, report_type) => {
     return found_report_type
 }
 
+const getS3ReportType = (table, report_type) => {
+    // Get the S3 report type from config, falling back to the dbt report_type if not specified
+    const tableInfo = getTableInfo(table, report_type)
+
+    if (tableInfo.length > 0 && tableInfo[0].s3_report_type) {
+        return tableInfo[0].s3_report_type
+    }
+
+    return report_type
+}
+
 const date_modify = (date, report_type, normal_format, table) => {
 
     // if (report_type == 'GET_BRAND_ANALYTICS_SEARCH_QUERY_PERFORMANCE_REPORT') {
@@ -156,11 +167,11 @@ const suffix_modify = (report, report_type, table) => {
 
         // return report.file_suffix.replace("%ASIN%", report.asin)
 
-        let newSuffix = !!report.asin ? found_report_type.suffix.replace("%ASIN%", report.asin) :  found_report_type.suffix;
+        let newSuffix = !!report.asin ? found_report_type.suffix.replace("%ASIN%", report.asin) : found_report_type.suffix;
 
         // console.log("NEW SUFFIX ",found_report_type.report_type, newSuffix)
         report.suffix = newSuffix;
-        return  newSuffix
+        return newSuffix
 
     }
 
@@ -180,5 +191,7 @@ module.exports = {
     bigquery_dev,
     bigquery_prod,
     date_modify,
-    suffix_modify
+    suffix_modify,
+    getTableInfo,
+    getS3ReportType
 };

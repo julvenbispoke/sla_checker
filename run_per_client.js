@@ -46,12 +46,14 @@ let init = async (req, res) => {
     const createJob = async () => {
         console.log("CREATING JOB")
         try {
-            await bigquery_dev.query(`
+            let query = `
             INSERT INTO \`${dataset_table}\` (client_list, gg_table) 
             SELECT ARRAY_AGG(DISTINCT CAST(client_id AS INT64)) AS client_list, '${req.query.table}' AS gg_table     
             FROM \`amazon-sp-report-loader.dbt.${req.query.table}\` 
-            --WHERE client_id = '182'
-            `)
+            ${req.query?.client_id ? `WHERE client_id = '${req.query.client_id}'` : ''}
+            `
+            console.log("JOB SQL", query)
+            await bigquery_dev.query(query)
         }
         catch (err) {
             console.log("ERROR CREATING JOB: ", err)
@@ -176,6 +178,14 @@ router.get("/", async (req, res) => {
         res.status(500).send({ status: 'missing table parameter or value'})
         return
     }
+    if(req.query?.client_id && !isNaN(req.query.client_id)) {
+        console.log("REQUEST HAS CLIENT ID PARAMETER", req.query.client_id)
+     
+    }
+    else {
+        console.log("REQUEST PARAMETER CLIENT ID INVALID", req.query.client_id)
+        delete req.query.client_id
+    }
 
     // let resp = await init(req, res)
     let resp = null
@@ -203,7 +213,7 @@ router.get("/", async (req, res) => {
         }
     }
 
-    // console.log(resp)
+    console.log("ALL DONE")
     res.send({ status: resp, })
     return
 
